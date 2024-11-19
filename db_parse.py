@@ -61,7 +61,7 @@ def get_response(user_query: str, db: SQLDatabase, chat_history: list):
     <SCHEMA>{schema}</SCHEMA>
     
     Conversation History: {chat_history}
-    SQL Query: <SQL>{query></SQL>
+    SQL Query: <SQL>{query}</SQL>
     User Question: {question}
     SQL Response: {response}
     """
@@ -122,10 +122,10 @@ with st.sidebar:
 
 for message in st.session_state.chat_history:
     if isinstance(message, AIMessage):
-        with st.chat_message["AI"]:
+        with st.chat_message("AI"):
             st.markdown(message.content)
     elif isinstance(message, HumanMessage):
-        with st.chat_message["Human"]:
+        with st.chat_message("Human"):
             st.markdown(message.content)
 user_query = st.chat_input("Type a message")
 
